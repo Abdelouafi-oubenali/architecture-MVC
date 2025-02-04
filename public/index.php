@@ -1,7 +1,6 @@
 <?php 
-var_dump(require_once "../app/config/Config.php");
-$pdo = Config::connect();
-phpinfo();
+require_once dirname(__FILE__, 2).'/vendor/autoload.php';
+use app\Config\Database;
+$pdo = Database::connect();
 var_dump($pdo);
-
 ?>
