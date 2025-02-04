@@ -5,7 +5,6 @@ use PDOException;
 
 class Database {
    private static ?PDO $pdo = null;
-
    public static function connect(): PDO {
       if (self::$pdo === null) {
          try {
