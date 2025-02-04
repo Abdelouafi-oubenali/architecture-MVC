@@ -1,6 +1,5 @@
-<?php 
-require_once dirname(__FILE__, 2).'/vendor/autoload.php';
-use app\Config\Database;
-$pdo = Database::connect();
-var_dump($pdo);
-?>
+<?php
+require_once '../app/config/Database.php';
+require '../vendor/autoload.php';
+
+require '../app/routes/mange.php';

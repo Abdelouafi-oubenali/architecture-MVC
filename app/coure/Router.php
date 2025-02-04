@@ -14,8 +14,6 @@ class Router {
             'controller' => $controller, 
             'action' => $action
         ];  
-        
-        
     }
 
     // function get 
@@ -34,13 +32,13 @@ class Router {
     public function dispatch()
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
-        // var_dump($uri);
+        // echo $uri;
         $method =  $_SERVER['REQUEST_METHOD'];
         // print_r($this->routes);
         if (array_key_exists($uri, $this->routes[$method])) {
             $controller = $this->routes[$method][$uri]['controller'];
             $action = $this->routes[$method][$uri]['action'];
-            // var_dump($controller);
+            var_dump($controller);
             // var_dump($action);
 
             $controller = new $controller();
