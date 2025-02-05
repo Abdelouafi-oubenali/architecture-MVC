@@ -36,7 +36,7 @@
         <!-- Grille des cours -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Carte de cours 1 -->
-            <?php foreach ($cours as $article): ?>
+           {% for article in cours %}
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <div class="p-6">
                     <div class="flex items-center">
@@ -45,7 +45,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
                         </div>
-                        <h2 class="ml-3 text-xl font-semibold text-gray-800"><?php echo $article['title'] ?></h2>
+                        <h2 class="ml-3 text-xl font-semibold text-gray-800">{{ article.title}}</h2>
                     </div>
                     <p class="mt-4 text-gray-600">Apprenez les bases du développement web avec HTML, CSS et JavaScript.</p>
                     <div class="mt-4">
@@ -58,7 +58,7 @@
                     </button>
                 </div>
             </div>
-            <?php endforeach; ?>
+            {%  endfor  %}
         </div>
     </main>
 

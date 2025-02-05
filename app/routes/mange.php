@@ -8,7 +8,7 @@ $router->get('/', CourseController::class,'home');
 // articleController::class => path de controller
 // home => name de methode qui apelle
 
-$router->get('/artcle', CourseController::class, 'cours');
+$router->get('/article', CourseController::class, 'cours');
 
 $router->post('/addArticle', CourseController::class,'addArticle');
 
