@@ -53,7 +53,7 @@ public function login() {
             header('Location: /');
             exit;
         } else {
-            echo $this->twig->render('auth/login.html.twig', ['error' => ' le code au email no courcct  ']);
+            echo $this->twig->render('login.html.twig', ['error' => ' le code au email no courcct  ']);
         }
     }
 }
