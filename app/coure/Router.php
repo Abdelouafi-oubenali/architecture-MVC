@@ -1,6 +1,5 @@
 <?php 
 namespace app\coure;
-use app\coure\Controller;
 
 class Router {
     protected $routes = [];
@@ -27,25 +26,21 @@ class Router {
     { 
         $this->addrote($route,$controller,$action,'POST');
     }
+   
 
     // dispatch 
     public function dispatch()
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
-        echo $uri;
         $method =  $_SERVER['REQUEST_METHOD'];
         // var_dump($method);
         if (array_key_exists($uri, $this->routes[$method])) {
             $controller = $this->routes[$method][$uri]['controller'];
-        
+            var_dump($controller);
             // in ry ena methode ex = post----> /hom --------> countroler 
             $action = $this->routes[$method][$uri]['action'];
-            // var_dump($controller);
-            // var_dump($action);
             $controller = new $controller();
-            // var_dump($controller);
             $controller->$action();
-            // var_dump($action);
         } else {
             // $this->render('404');
         }
