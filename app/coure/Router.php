@@ -36,7 +36,7 @@ class Router {
         // var_dump($method);
         if (array_key_exists($uri, $this->routes[$method])) {
             $controller = $this->routes[$method][$uri]['controller'];
-            var_dump($controller);
+
             // in ry ena methode ex = post----> /hom --------> countroler 
             $action = $this->routes[$method][$uri]['action'];
             $controller = new $controller();

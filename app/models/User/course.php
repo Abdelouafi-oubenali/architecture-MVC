@@ -29,5 +29,14 @@ class Course {
         $result->execute(['id' => $id]);
         return $result->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function createUser($name, $email, $password) {
+        $stmt = $this->connection->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
+        return $stmt->execute([
+            'name' => $name,
+            'email' => $email,
+            'password' => $password
+        ]);
+    }
 }
 ?>

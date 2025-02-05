@@ -17,4 +17,9 @@ $router->post('/addArticle', CourseController::class,'addArticle');
 
 $router->get('/login' , AuthController ::class ,'showLoginForm' );
 
+$router->get('/register' ,AuthController::class , 'showLregsterForm' );
+
+$router->post('/register' ,AuthController::class , 'register' );
+
+
 $router->dispatch();    
