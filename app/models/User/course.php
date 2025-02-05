@@ -22,6 +22,15 @@ class Course {
         $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getUserByEmail($email) {
+        $query = "SELECT * FROM users WHERE email = :email LIMIT 1";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function getCourseById($id){
         $query = "SELECT * FROM courses WHERE id = :id";

@@ -29,12 +29,32 @@ class AuthController {
             echo $this->twig->render('auth/register.html.twig', ['error' => 'entrer all data']);
             return;
         }
-
+        
         $userModel = new Course();
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $userModel->createUser($name, $email, $hashedPassword);
         header('Location: /login');
         exit;
+    }
+    
+}
+public function login() {
+    session_start();
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+
+        $userModel = new Course();
+        $user = $userModel->getUserByEmail($email);
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user'] = $user;
+            header('Location: /');
+            exit;
+        } else {
+            echo $this->twig->render('auth/login.html.twig', ['error' => ' le code au email no courcct  ']);
+        }
     }
 }
 
