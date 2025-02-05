@@ -29,8 +29,9 @@ class CourseController extends controller{
 //    index => page 
 
     public function cours(){
-        $article=$this->cours->getCourseById($_GET['id']);
+        $cour=$this->cours->getCourseById($_GET['id']);
+        
         // $this->render('article',['course'=>$article]);
-        echo  $this->twig->render('article.html.twig',['cour'=>$article]);
+        echo  $this->twig->render('article.html.twig',['cour'=>$cour]);
     }
 }

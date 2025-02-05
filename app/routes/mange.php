@@ -23,5 +23,4 @@ $router->post('/register' ,AuthController::class , 'register' );
 
 $router->post('/login' , AuthController ::class ,'login' );
 
-
-$router->dispatch();    
+$router->dispatch();

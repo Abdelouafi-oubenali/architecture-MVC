@@ -8,6 +8,9 @@ use PDO;
 class Course {
 
     protected $connection;
+    protected $cours;
+    protected $twig;
+    protected $loder;
 
     public function __construct(){
         $this->connection = Database::connect();
@@ -22,22 +25,25 @@ class Course {
         $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+
     public function getUserByEmail($email) {
         $query = "SELECT * FROM users WHERE email = :email LIMIT 1";
         $stmt = $this->connection->prepare($query);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
-
-        
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getCourseById($id){
+    public function getCourseById($id) {
+        $id = (int)$id; 
         $query = "SELECT * FROM courses WHERE id = :id";
-        $result = $this->connection->prepare($query);
-        $result->execute(['id' => $id]);
-        return $result->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
 
     public function createUser($name, $email, $password) {
         $stmt = $this->connection->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
