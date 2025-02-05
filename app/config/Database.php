@@ -4,7 +4,7 @@ use PDO;
 use PDOException;
 
 class Database {
-   private static ?PDO $pdo = null;
+   private static $pdo = null;
 
    public static function connect(): PDO {
       if (self::$pdo === null) {

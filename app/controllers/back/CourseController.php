@@ -12,11 +12,13 @@ class CourseController extends controller{
     public function home()
     {
         $allArticles=$this->cours->getCourses();
-        $this->render('index',['articles'=>$allArticles]);
+        $this->render('index',['cours'=>$allArticles]);
     }
+//    cours => le vriable a qui traville 
+//    index => page 
 
-    public function article(){
+    public function cours(){
         $article=$this->cours->getCourseById($_GET['id']);
-        $this->render('article',['article'=>$article]);
+        $this->render('article',['course'=>$article]);
     }
 }

@@ -21,8 +21,8 @@ class Router {
     {
         $this->addrote($route,$controller,$action,"GET");
     }
-    //function post
 
+    //function post
     public function post($route,$controller,$action)
     { 
         $this->addrote($route,$controller,$action,'POST');
@@ -32,15 +32,16 @@ class Router {
     public function dispatch()
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
-        // echo $uri;
+        echo $uri;
         $method =  $_SERVER['REQUEST_METHOD'];
-        // print_r($this->routes);
+        // var_dump($method);
         if (array_key_exists($uri, $this->routes[$method])) {
             $controller = $this->routes[$method][$uri]['controller'];
+        
+            // in ry ena methode ex = post----> /hom --------> countroler 
             $action = $this->routes[$method][$uri]['action'];
             var_dump($controller);
             // var_dump($action);
-
             $controller = new $controller();
             // var_dump($controller);
             $controller->$action();
